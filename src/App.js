@@ -1,26 +1,34 @@
 
 import React,{useState} from "react";
-import { Button, DatePicker, Space, version } from "antd";
-import "antd/dist/antd.css";
+import {  DatePicker, Space, version } from "antd";
+
 import "./index.css";
 import moment from 'moment';
+import logo from "./logo.svg";
+import "@aws-amplify/ui-react/styles.css";
+import {
+  withAuthenticator,
+  Button,
+  Heading,
+  Image,
+  View,
+  Card,
+} from "@aws-amplify/ui-react";
 
-const App = () => {
 
-  const [startDate, setStartDate] = useState(moment('2015-01-01', 'YYYY-MM-DD'));
-  const showDate = () => {
-    alert( startDate );
-  }
 
+function App({ signOut }) {
   return (
-    <div className="App">
-      <h1>Go places!</h1>
-      <Space>
-      <DatePicker defaultValue={startDate} onChange={(newDate) => setStartDate(newDate) }/>
-        <Button type="primary" onClick={ (e) => showDate()} > Primary Button</Button>
-      </Space>
-    </div>
+    <View className="App">
+      <Card>
+        <Image src={logo} className="App-logo" alt="logo" />
+        <Heading level={1}>We now have Auth!</Heading>
+      </Card>
+      <Button onClick={signOut}>Sign Out</Button>
+    </View>
   );
-};
+}
 
-export default App;
+export default withAuthenticator(App);
+
+
