@@ -44,7 +44,7 @@ const LocationDetail = ( props ) => {
                         frameBorder="0" 
                         height="245" 
                         width="100%" 
-                        src={`http://forecast.io/embed/#lat=${lat}&lon=${lng}&color=#496a4d&font=Arial&units=us`}> 
+                        src={`https://forecast.io/embed/#lat=${lat}&lon=${lng}&color=#496a4d&font=Arial&units=us`}> 
                 </iframe>
                 
                 </TabPane>
