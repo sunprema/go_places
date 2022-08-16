@@ -36,7 +36,7 @@ const markerClickHandler =(e, place) => {
       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     />
     { places.locations.map( place =>
-        <Marker position={{ "lat": place.lat, "lng": place.lng }} 
+        <Marker key={`${place.lat}-${place.lng}`} position={{ "lat": place.lat, "lng": place.lng }} 
         icon={icon} 
         eventHandlers={{
             click:  (e) =>  markerClickHandler( e, place)                 
@@ -56,7 +56,7 @@ const markerClickHandler =(e, place) => {
                 onOk={() => setLocationDetailsVisible(false)}
                 onCancel={() => setLocationDetailsVisible(false)}           
                 width={"80%"}>
-                <LocationDetail place={place} lat={location.lat} lng={location.lng}/>    
+                <LocationDetail place={place}/>    
             </Modal> 
         :
         <></>

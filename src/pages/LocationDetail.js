@@ -12,11 +12,12 @@ const { TabPane } = Tabs;
 const operations = <Button type='primary'>Add to Bucket List!</Button>;
 
 const LocationDetail = ( props ) => {
-  let { place, lat, lng} = props; 
+  let { place} = props; 
   if (place === null){
       return <Empty description="Place data is not available"></Empty>
   }   
-
+  const weatherSrc = `https://forecast.io/embed/#lat=${place.lat}&lon=${place.lng}&color=#496a4d&font=Arial&units=us`
+  console.log(weatherSrc)
   return (
     <>
     <Row gutter={[32,16]}>
@@ -34,17 +35,18 @@ const LocationDetail = ( props ) => {
                     tab={
                         <span>
                         <InfoCircleFilled />
-                        Details
+                        Details - {place.lat} , {place.lng}
                         </span>
                     }
                     key="details"
                 >
-                <iframe id="forecast_embed" 
+                <iframe id="forecast_embed"
+                        key={`${place.lat}-${place.lng}`} 
                         type="text/html" 
                         frameBorder="0" 
                         height="245" 
                         width="100%" 
-                        src={`https://forecast.io/embed/#lat=${lat}&lon=${lng}&color=#496a4d&font=Arial&units=us`}> 
+                        src={weatherSrc}> 
                 </iframe>
                 
                 </TabPane>
